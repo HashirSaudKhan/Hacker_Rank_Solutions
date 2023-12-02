@@ -1,5 +1,5 @@
 /* 
-Working platform:- MySQL
+Working platform:- MySQL 
 */
 with n_table as
 (
