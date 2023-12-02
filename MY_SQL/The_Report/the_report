@@ -1,4 +1,6 @@
-/* the report */
+/* 
+Working platform:- MySQL
+*/
 with n_table as
 (
     select 
