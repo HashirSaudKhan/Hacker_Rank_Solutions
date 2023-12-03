@@ -1,0 +1,20 @@
+# Platform :- mysql
+SELECT All_hacker_id, Names
+FROM (
+    SELECT 
+        hk.hacker_id AS All_hacker_id,
+        hk.name AS Names,
+        COUNT(s.hacker_id) AS Count_id
+    FROM 
+        submissions s
+        JOIN challenges chl ON s.challenge_id = chl.challenge_id
+        JOIN difficulty dl ON chl.difficulty_level = dl.difficulty_level 
+        JOIN hackers hk ON s.hacker_id = hk.hacker_id
+    WHERE 
+        dl.score = s.score
+    GROUP BY 
+        hk.hacker_id, hk.name
+    HAVING 
+        COUNT(s.hacker_id) > 1
+    ORDER BY 
+        Count_id DESC,All_hacker_id ASC)  as n_table;
